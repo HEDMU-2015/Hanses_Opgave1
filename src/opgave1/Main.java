@@ -120,9 +120,36 @@ public class Main {
 		containers.add(new Container(i++, LocalDate.of(2016, 3, 10), LocalDate.of(2016, 3, 15)));
 		containers.add(new Container(i++, LocalDate.of(2016, 3, 10), LocalDate.of(2016, 3, 11)));
 
-		System.out.println(containers);
+		
+		store(2, true, containers);
+		store(2, false, containers);
+		store(3, true, containers);
+		store(3, false, containers);
+		store(4, true, containers);
+		store(4, false, containers);
+		store(5, true, containers);
+		store(5, false, containers);
 		
 
+	}
+	
+	private static void store(int maxHeight, boolean receiveFirst, List<Container> containers) {
+		System.out.println(" \n *** New Store, maxheight = " + maxHeight + ", receiveBeforePickup = " + receiveFirst);
+		Store store = new Store(maxHeight, receiveFirst);
+		for (Container cont : containers) {
+			store.store(cont);
+//			document(store);
+		}
+		document(store);
+		
+	}
+	
+	private static void document(Store store) {
+		System.out.println("Max Containers = " + store.getMaxContainers() +
+				", Actual Containers = " + store.getActualContainers() +
+				", Max places = " + store.getMaxPlaces() +
+				", Actual places = " + store.getActualPlaces());
+		
 	}
 
 }
